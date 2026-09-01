@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend/src:/app/src  # Enables live reloading for development
+    depends_on:
+      - mcp_server
+
+  mcp_server:
+    build:
+      context: ./mcp_server
+    env_file:
+      - .env
+    volumes:
+      - ./mcp_server/src:/app/src

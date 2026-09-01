@@ -1,0 +1,29 @@
+# Environnements Virtuels (uv)
+.venv/
+env/
+venv/
+
+# Variables d'environnement
+.env
+.env.local
+
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Bases de données (LangGraph Memory)
+*.db
+*.sqlite
+*.sqlite3
+backend/data/
+
+# Fichiers générés par le système / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Logs et Docker
+*.log
+.dockerignore
