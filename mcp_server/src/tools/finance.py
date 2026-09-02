@@ -2,7 +2,7 @@ import httpx
 
 
 async def convert_currency(amount: float, from_curr: str, to_curr: str) -> dict:
-    """Convertit un montant entre devises via l'API Frankfurter."""
+    """Converts an amount between currencies via the Frankfurter API."""
     from_c = from_curr.upper()
     to_c = to_curr.upper()
 
@@ -15,7 +15,7 @@ async def convert_currency(amount: float, from_curr: str, to_curr: str) -> dict:
         try:
             res = await client.get(url, timeout=10.0)
             if res.status_code != 200:
-                return {"error": f"Échec de conversion de {from_c} à {to_c}"}
+                return {"error": f"Failed to convert from {from_c} to {to_c}"}
 
             rates = res.json().get("rates", {})
             converted = rates.get(to_c)
@@ -26,4 +26,4 @@ async def convert_currency(amount: float, from_curr: str, to_curr: str) -> dict:
                 "converted_amount": converted,
             }
         except Exception as e:
-            return {"error": f"Erreur réseau: {str(e)}"}
+            return {"error": f"Network error: {str(e)}"}
