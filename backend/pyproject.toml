@@ -1,23 +1,25 @@
 [project]
 name = "backend"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI Travel Planner Backend"
 readme = "README.md"
-authors = [
-    { name = "FlorianeJN", email = "Floriane.nikebie.1@etsmtl.net" }
-]
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.13"
 dependencies = [
     "deepagents>=0.7.12",
     "fastapi>=0.141.1",
+    "langchain-core>=1.6.1",
     "langchain-google-genai>=4.4.0",
+    "langchain-mcp-adapters>=0.3.1",
     "langgraph>=1.2.11",
+    "mcp>=1.3.0,<2.0.0",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.2.3",
     "uvicorn>=0.52.4",
 ]
-
-[project.scripts]
-backend = "backend:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv]
+package = false
