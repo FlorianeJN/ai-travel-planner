@@ -1,22 +1,42 @@
 services:
+  mcp_server:
+    build:
+      context: ./mcp_server
+      dockerfile: Dockerfile
+    container_name: mcp_server
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    volumes:
+      - ./mcp_server/src:/app/src
+    restart: unless-stopped
+    networks:
+      - travel_net
+
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
+    container_name: travel_backend
     ports:
       - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MCP_SERVER_URL=http://mcp_server:5000/sse
+      - PYTHONPATH=/app/src
     env_file:
       - .env
     volumes:
       - ./backend/src:/app/src
     depends_on:
       - mcp_server
+    restart: unless-stopped
+    networks:
+      - travel_net
 
-  mcp_server:
-    build:
-      context: ./mcp_server
-    ports:
-      - "5000:5000" 
-    env_file:
-      - .env
-    volumes:
-      - ./mcp_server/src:/app/src
+networks:
+  travel_net:
+    driver: bridge
