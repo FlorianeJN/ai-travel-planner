@@ -25,21 +25,24 @@ class LogisticsEstimate(TypedDict):
     currency: str
 
 
+class WeatherForecast(TypedDict):
+    summary: str
+    temperature_range: Optional[str]
+    conditions: Optional[str]
+    is_forecast_reliable: bool
+
+
 class TravelState(TypedDict):
-    # Historique des messages LangChain (user, ai, tool calls)
     messages: Annotated[List[BaseMessage], add_messages]
 
-    # Données extraites et partagées
     destination: Optional[str]
     origin: Optional[str]
     dates: Optional[str]
     budget_limit: Optional[float]
     base_currency: str
 
-    # Résultats des nœuds spécialisés
     weather_forecast: Optional[dict]
     logistics: Optional[LogisticsEstimate]
     itinerary: Optional[List[DailyPlan]]
 
-    # Métadonnées de contrôle de flux
     next_step: Optional[str]
