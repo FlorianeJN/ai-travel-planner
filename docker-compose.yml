@@ -7,13 +7,15 @@ services:
     env_file:
       - .env
     volumes:
-      - ./backend/src:/app/src  # Enables live reloading for development
+      - ./backend/src:/app/src
     depends_on:
       - mcp_server
 
   mcp_server:
     build:
       context: ./mcp_server
+    ports:
+      - "5000:5000" 
     env_file:
       - .env
     volumes:

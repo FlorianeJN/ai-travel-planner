@@ -15,7 +15,7 @@ Le projet est divisé en deux microservices conteneurisés :
 1.  **Backend (`/backend`) :** Le "Cerveau". Exécute FastAPI, gère le StateGraph (LangGraph), et maintient la mémoire (SQLite).
 2.  **MCP Server (`/mcp_server`) :** Les "Mains". Un serveur léger exposant les outils au standard MCP pour une exécution sécurisée.
 
-## 🛠️ Stack Technique
+## Stack Technique
 *   **Langage :** Python 3.11
 *   **Gestionnaire de paquets :** `uv`
 *   **Framework LLM :** DeepAgents, LangGraph, LangChain (Google GenAI / Gemini)
